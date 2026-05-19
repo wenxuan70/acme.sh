@@ -98,7 +98,7 @@ dns_volcengine_rm() {
     return 1
   fi
 
-  if _contains "$response" "\"FQDN\":\"$_domain\""; then
+  if _contains "$response" "\"FQDN\":\"$fulldomain\""; then
     _record_id="$(echo "$response" | _egrep_o "\"RecordID\":\"[0-9]+\"," | cut -d: -f2 | cut -d, -f1 | tr -d '"')"
     _debug "_record_id" "$_record_id"
   else
